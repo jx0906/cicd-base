@@ -8,9 +8,10 @@ COPY mvnw.cmd .
 COPY .mvn .mvn
 COPY src src
 COPY pom.xml .
+RUN chmod +x ./mvnw
 RUN ./mvnw package -DskipTests=true
 
-# second stage - wiill just copy the jar file so people cannot see the source code from first stage
+# second stage wiill just copy the jar file so people cannot see the source code from first stage
 FROM openjdk:23-ea-oracle
 
 WORKDIR /runningapp
